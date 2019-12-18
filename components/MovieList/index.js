@@ -21,9 +21,13 @@ export default class MovieList extends Component {
   //Pengaturan Header MovieList
   static navigationOptions = {
     title: 'Movie List',
-    headerStyle: { backgroundColor: '#01d277' },
+    headerStyle: {
+      backgroundColor: '#01d277'
+    },
     headerTintColor: '#081c24',
-    headerTitleStyle: { fontWeight: 'bold' }
+    headerTitleStyle: {
+      fontWeight: 'bold'
+    }
   };
 
   constructor(props){
@@ -48,10 +52,28 @@ export default class MovieList extends Component {
 
   renderListItem = ({ item }) => (
     <TouchableOpacity style = {{ backgroundColor: 'transparent' }}
-    onPress={() => this.props.navigation.navigate('MoviePage', { title: item.title, poster: item.poster_path, overview: item.overview, release: item.release_date, votec: item.vote_count, votea: item.vote_average })}>
+    onPress={() =>
+      this.props.navigation.navigate('MoviePage',
+      { 
+        title: item.title,
+        poster: item.poster_path,
+        overview: item.overview,
+        release: item.release_date,
+        votec: item.vote_count,
+        votea: item.vote_average
+      })}>
       <View style = { styles.listItemContainer }>
-        <Text style = {{ alignSelf: 'center'}}>{ item.title }</Text>
-        <Image source = {{ uri: 'https://image.tmdb.org/t/p/original' + item.backdrop_path }} style = { styles.posterImage }/>
+        <Text style = {{ alignSelf: 'center' }}>
+          { item.title }
+        </Text>
+        <Image 
+          source = {{
+            uri: 'https://image.tmdb.org/t/p/original' + item.backdrop_path
+          }}
+          style = {
+            styles.posterImage
+          }        
+        />
       </View>
     </TouchableOpacity>
   )
